@@ -4,9 +4,11 @@
 #pragma once
 
 /* The Sun keyboard reports a 7 bit key id per event, which is used directly as
- * a virtual matrix position: row = id >> 3, col = id & 7. */
-#define MATRIX_ROWS 16
-#define MATRIX_COLS 8
+ * a virtual matrix position: row = id >> 4, col = id & 15. 8 rows of 16 rather
+ * than 16 of 8, because Vial's matrix tester only works while the whole matrix
+ * fits in one HID report, (MATRIX_COLS / 8 + 1) * MATRIX_ROWS <= 28. */
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 16
 
 /* ---------------------------------------------------------------------------
  * Sun serial link

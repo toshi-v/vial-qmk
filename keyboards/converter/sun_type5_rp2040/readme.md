@@ -391,8 +391,9 @@ actually has - press every key in turn and collect the `sun: rx XX` values.
   in the wrong state cannot press keys nobody touched. The `0x7F` idle byte a
   keyboard sends whenever the last key comes up counts as a handshake too, so a
   board that ignored `0x01` entirely would still unlock on the first keystroke.
-* Key ids double as positions in a 16x8 virtual matrix (`row = id >> 3`,
-  `col = id & 7`), which is what Vial and the `LAYOUT_` macros address.
+* Key ids double as positions in an 8x16 virtual matrix (`row = id >> 4`,
+  `col = id & 15`), which is what Vial and the `LAYOUT_` macros address. It is
+  8 rows of 16 rather than 16 of 8 so that Vial's matrix tester can show it.
 * Protocol details, including the scan code tables, the DIP switch bit order and
   the fixed `0x22` of a compact board, are on the
   [TMK wiki](https://github.com/tmk/tmk_keyboard/wiki/Sun-Keyboard-Protocol).

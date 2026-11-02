@@ -17,20 +17,19 @@
  *   bit 7    0 = make, 1 = break
  *   bit 6..0 key id
  *
- * The key id doubles as the position in a virtual 16x8 matrix, which is what
+ * The key id doubles as the position in a virtual 8x16 matrix, which is what
  * the LAYOUT macros and Vial are addressing:
  *
- *      8 bit wide
+ *      16 bit wide
  *     +---------+
- *   0 |00 ... 07|
- *   1 |08 ... 0F|
+ *   0 |00 ... 0F|
+ *   1 |10 ... 1F|
  *   : |   ...   |
- *   E |70 ... 77|
- *   F |78 ... 7F|
+ *   7 |70 ... 7F|
  *     +---------+
  */
-#define SUN_ROW(code) (((code) >> 3) & 0x0F)
-#define SUN_COL(code) ((code) & 0x07)
+#define SUN_ROW(code) (((code) >> 4) & 0x07)
+#define SUN_COL(code) ((code) & 0x0F)
 
 #define SUN_BAUD 1200
 
